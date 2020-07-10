@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/font_title.tres" type="DynamicFont" id=1]
+
+[node name="Text" type="Label"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -82.0505
+margin_top = 387.553
+margin_right = 77.9495
+margin_bottom = 442.553
+custom_fonts/font = ExtResource( 1 )
+text = "Game
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,141 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://src/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/new_player/player-idle-1.png" type="Texture" id=2]
+[ext_resource path="res://assets/new_player/player-idle-2.png" type="Texture" id=3]
+[ext_resource path="res://assets/new_player/player-idle-4.png" type="Texture" id=4]
+[ext_resource path="res://assets/new_player/player-idle-3.png" type="Texture" id=5]
+[ext_resource path="res://assets/new_player/player-idle-5.png" type="Texture" id=6]
+[ext_resource path="res://assets/new_player/player-idle-6.png" type="Texture" id=7]
+[ext_resource path="res://assets/new_player/player-idle-8.png" type="Texture" id=8]
+[ext_resource path="res://assets/new_player/player-idle-9.png" type="Texture" id=9]
+[ext_resource path="res://assets/new_player/player-idle-7.png" type="Texture" id=10]
+[ext_resource path="res://assets/new_player/fall/player-fall-4.png" type="Texture" id=11]
+[ext_resource path="res://assets/new_player/running/player-skip-3.png" type="Texture" id=12]
+[ext_resource path="res://assets/new_player/running/player-skip-6.png" type="Texture" id=13]
+[ext_resource path="res://assets/new_player/jump/player-jump-4.png" type="Texture" id=14]
+[ext_resource path="res://assets/new_player/jump/player-jump-3.png" type="Texture" id=15]
+[ext_resource path="res://assets/new_player/jump/player-jump-2.png" type="Texture" id=16]
+[ext_resource path="res://assets/new_player/fall/player-fall-2.png" type="Texture" id=17]
+[ext_resource path="res://assets/new_player/fall/player-fall-3.png" type="Texture" id=18]
+[ext_resource path="res://assets/new_player/fall/player-fall-1.png" type="Texture" id=19]
+[ext_resource path="res://assets/new_player/running/player-skip-5.png" type="Texture" id=20]
+[ext_resource path="res://assets/new_player/running/player-skip-8.png" type="Texture" id=21]
+[ext_resource path="res://assets/new_player/running/player-skip-7.png" type="Texture" id=22]
+[ext_resource path="res://assets/new_player/running/player-skip-4.png" type="Texture" id=23]
+[ext_resource path="res://assets/new_player/jump/player-jump-1.png" type="Texture" id=24]
+[ext_resource path="res://assets/new_player/running/player-skip-1.png" type="Texture" id=25]
+[ext_resource path="res://assets/new_player/running/player-skip-2.png" type="Texture" id=26]
+[ext_resource path="res://src/scenes/Carrot_bullet.tscn" type="PackedScene" id=27]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 55.4682, 60.4231 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 62.3742, 58.2781 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "jump"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 11 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "running"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 21 ) ]
+}
+
+[node name="player" type="KinematicBody2D"]
+scale = Vector2( 0.7, 0.7 )
+collision_mask = 8
+script = ExtResource( 1 )
+speed = Vector2( 800, 1000 )
+bullet = ExtResource( 27 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 25.2176, -25.2347 )
+scale = Vector2( 4.27259, 4.05169 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 22.9424, -18.8532 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -190.95 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 4000
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+drag_margin_left = 0.0
+drag_margin_right = 0.0
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+position = Vector2( 21.8858, -21.8858 )
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+modulate = Color( 0.478431, 1, 0, 1 )
+position = Vector2( 1.35777, 2.63614 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/running = SubResource( 5 )
+
+[node name="Bullet_container" type="Node" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 21.5902, -21.1598 )
+scale = Vector2( 6.15269, 6.70839 )
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
